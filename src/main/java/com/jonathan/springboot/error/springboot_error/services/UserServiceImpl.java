@@ -2,6 +2,7 @@ package com.jonathan.springboot.error.springboot_error.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Long id) {
-        return userList.stream().filter(u -> u.getId().equals(id)).findFirst().orElse(null);
+    public Optional<User> findById(Long id) {
+        return Optional.ofNullable(userList.stream().filter(u -> u.getId().equals(id)).findFirst().orElse(null));
     }
 
 }
